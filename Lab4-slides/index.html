@@ -1,0 +1,735 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="['Igor', 'Rafael', 'Hashi']">
+      
+      
+        <link rel="canonical" href="https://insper.github.io/Labs-de-C/Lab4-slides/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.5">
+    
+    
+      
+        <title>Vetores unidimensionais, strings e matrizes - 5s - Labs de C - Insper Comp.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.77f3fd56.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/printing.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mutirao-c" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://insper.github.io/Labs-de-C/" title="5s - Labs de C - Insper Comp." class="md-header__button md-logo" aria-label="5s - Labs de C - Insper Comp.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            5s - Labs de C - Insper Comp.
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Vetores unidimensionais, strings e matrizes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Insper/Labs-de-C/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Insper/Labs-de-C
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://insper.github.io/Labs-de-C/" title="5s - Labs de C - Insper Comp." class="md-nav__button md-logo" aria-label="5s - Labs de C - Insper Comp.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    5s - Labs de C - Insper Comp.
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Insper/Labs-de-C/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Insper/Labs-de-C
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Mutirão
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Mutirão" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Mutirão
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about-mutirao/" class="md-nav__link">
+        Sobre
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab1/" class="md-nav__link">
+        Lab 1 - Conceitos Básicos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab2/" class="md-nav__link">
+        Lab 2 - Praticando
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab3/" class="md-nav__link">
+        Lab 3 - Compilação usando GCC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab4/" class="md-nav__link">
+        Lab 4 - Arrays, Strings e Matrizes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab5/" class="md-nav__link">
+        Lab 5 - Ponteiros e `structs`
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab6/" class="md-nav__link">
+        Lab 6 - juntando tudo
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Labs
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Labs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Labs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs-extras/lab7/" class="md-nav__link">
+        07 - Tabuada
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs-extras/lab8/" class="md-nav__link">
+        08 - Vales
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arrays-strings-e-matrizes" class="md-nav__link">
+    Arrays, Strings e Matrizes
+  </a>
+  
+    <nav class="md-nav" aria-label="Arrays, Strings e Matrizes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#igor-montagner-rafael-corsi-marcelo-hashimoto" class="md-nav__link">
+    Igor Montagner, Rafael Corsi, Marcelo Hashimoto
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Insper/Labs-de-C/edit/master/docs/Lab4-slides.md" title="Editar esta página" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="mutirao-c">Mutirão C<a class="headerlink" href="#mutirao-c" title="Permanent link">&para;</a></h1>
+<h5 id="arrays-strings-e-matrizes">Arrays, Strings e Matrizes<a class="headerlink" href="#arrays-strings-e-matrizes" title="Permanent link">&para;</a></h5>
+<h6 id="igor-montagner-rafael-corsi-marcelo-hashimoto">Igor Montagner, Rafael Corsi, Marcelo Hashimoto<a class="headerlink" href="#igor-montagner-rafael-corsi-marcelo-hashimoto" title="Permanent link">&para;</a></h6>
+<hr />
+<h1 id="revisao-da-leitura">Revisão da leitura<a class="headerlink" href="#revisao-da-leitura" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="compilacao">Compilação<a class="headerlink" href="#compilacao" title="Permanent link">&para;</a></h2>
+<p><strong>Compilar</strong> um programa significa transformar o código fonte (texto) nas instruções de máquina (bytes) equivalentes.</p>
+<p><img alt="width:500px" src="../imgs/Lab3/fluxo.svg" /></p>
+<p>Específico para</p>
+<ul>
+<li>arquitetura (ARM - embarcados e celulares, x64 - PCs convencionais)</li>
+<li>sistema operacional (Linux, Windows, Android)</li>
+</ul>
+<hr />
+<h2 id="comandos-para-compilacao">Comandos para compilação<a class="headerlink" href="#comandos-para-compilacao" title="Permanent link">&para;</a></h2>
+<p><strong>Usaremos Ubuntu 20.04 nas disciplinas Sistemas Hardware-Software e Desafios de Programação</strong>. </p>
+<p>Utilização do <code>gcc</code> na linha de comando:</p>
+<ol>
+<li><code>gcc -Wall -pedantic -Og -c arq1.c -o nome_executavel</code> (para compilar) </li>
+<li><code>./executavel</code> (para executar)</li>
+</ol>
+<hr />
+<h1 id="vetores-unidimensionais">Vetores unidimensionais<a class="headerlink" href="#vetores-unidimensionais" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="sintaxe">Sintaxe<a class="headerlink" href="#sintaxe" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Declaração:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">vetor</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span> <span class="cm">/* Tamanho FIXO */</span>
+<span class="kt">long</span> <span class="n">vetor2</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span> <span class="cm">/* Inicialização. */</span>
+</code></pre></div>
+<ul>
+<li>Acesso a elemento:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">vetor</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="cm">/* vetor[pos] */</span>
+</code></pre></div>
+<ul>
+<li>Uso como parâmetro de função:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">funcao1</span><span class="p">(</span><span class="kt">long</span> <span class="n">vetor</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">tamanho</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">funcao2</span><span class="p">(</span><span class="kt">long</span> <span class="n">vetor</span><span class="p">[</span><span class="mi">100</span><span class="p">]);</span> <span class="cm">/* tamanho FIXO */</span>
+</code></pre></div>
+<hr />
+<h2 id="boas-praticas">Boas práticas<a class="headerlink" href="#boas-praticas" title="Permanent link">&para;</a></h2>
+<p>Evite números mágicos no seu código! Use macros!</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define MAX_SIZE 100</span>
+
+<span class="kt">long</span> <span class="n">vec</span><span class="p">[</span><span class="n">MAX_SIZE</span><span class="p">];</span>
+
+<span class="p">...</span>
+
+<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">MAX_SIZE</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Por que isto é uma boa ideia?</li>
+</ul>
+<hr />
+<h2 id="organizacao-na-memoria">Organização na memória<a class="headerlink" href="#organizacao-na-memoria" title="Permanent link">&para;</a></h2>
+<p>Os dados de um vetor são organizados sequencialmente, <em>sem intervalos</em></p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">A</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</code></pre></div>
+<p><img alt="" src="../imgs/Lab4/vetor-long.png" /></p>
+<hr />
+<h2 id="exemplo">Exemplo<a class="headerlink" href="#exemplo" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="cm">/* no topo do arquivo*/</span>
+<span class="cp">#define SZ 5</span>
+<span class="cm">/* dentro do main*/</span>
+<span class="kt">long</span> <span class="n">vec</span><span class="p">[</span><span class="n">SZ</span><span class="p">];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">SZ</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="kt">long</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">SZ</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Soma eh par: %ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">%</span> <span class="mi">2</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="escopo-de-variaveis-normais">Escopo de variáveis "normais"<a class="headerlink" href="#escopo-de-variaveis-normais" title="Permanent link">&para;</a></h2>
+<p>Qual é o resultado deste código?</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">soma_um</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">long</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="n">soma_um</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="escopo-de-arrays">Escopo de arrays<a class="headerlink" href="#escopo-de-arrays" title="Permanent link">&para;</a></h2>
+<p>Qual é o resultado deste código?</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">soma_um</span><span class="p">(</span><span class="kt">long</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">long</span> <span class="n">pos</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">arr</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">long</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
+    <span class="n">soma_um</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;arr[5] %ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="parametros-passagem-por-valor-ou-referencia">Parâmetros: passagem por valor ou referência<a class="headerlink" href="#parametros-passagem-por-valor-ou-referencia" title="Permanent link">&para;</a></h2>
+<p><strong>Passagem por valor</strong>: <code>long n</code> é uma <strong>cópia</strong> do valor passado.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">soma_um</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Passagem por referência</strong>: <code>long arr[]</code> é o <strong>mesmo objeto</strong> da função chamadora.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">soma_um</span><span class="p">(</span><span class="kt">long</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">long</span> <span class="n">pos</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">arr</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h1 id="strings">Strings<a class="headerlink" href="#strings" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="codificacao">Codificação<a class="headerlink" href="#codificacao" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Cada caractere é representado por um número inteiro de 8 bits (<code>char</code>)</p>
+</li>
+<li>
+<p>Uma string é um array de <code>char</code></p>
+</li>
+<li>
+<p><strong>Tabela de Codificação</strong>: inteiro <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> caractere</p>
+</li>
+</ul>
+<hr />
+<p><img alt="" src="../imgs/Lab4/ascii-table.jpg" /></p>
+<hr />
+<h2 id="sintaxe_1">Sintaxe<a class="headerlink" href="#sintaxe_1" title="Permanent link">&para;</a></h2>
+<p><strong>Caractere:</strong> variável do tipo <code>char</code> que contém um inteiro da tabela ASCII. </p>
+<blockquote>
+<p><code>'A' == 65</code>, <code>'0' == 48</code></p>
+</blockquote>
+<p><strong>String:</strong> vetor de <code>char</code> cuja última posição contém o caractere especial <code>'\0'</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">string</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;bla bla bla&quot;</span><span class="p">;</span> <span class="cm">/* Inicializado */</span>
+<span class="kt">char</span> <span class="n">cmd</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>  <span class="cm">/* 99 caracteres, string inválida! */</span>
+</code></pre></div>
+<hr />
+<h2 id="organizacao-na-memoria_1">Organização na memória<a class="headerlink" href="#organizacao-na-memoria_1" title="Permanent link">&para;</a></h2>
+<p>Os dados de uma string são organizados sequencialmente, <em>sem intervalos</em>, sendo que <strong>o último elemento é sempre o caractere <code>'\0'</code></strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">str</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;INSPER&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p><img alt="" src="../imgs/Lab4/mem-str.png" /></p>
+<hr />
+<h2 id="tamanho-de-string">Tamanho de string<a class="headerlink" href="#tamanho-de-string" title="Permanent link">&para;</a></h2>
+<p>Funciona exatamente como um vetor, com a diferença que <strong>uma string sabe seu
+tamanho atual, mas não sabe seu tamanho máximo</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">string_length</span><span class="p">(</span><span class="kt">char</span> <span class="n">str</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">&#39;\0&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">n</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">n</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>A string não precisa ocupar todas as posições do array! Ela acaba no caractere <code>'\0'</code>.</p>
+<hr />
+<h2 id="entrada-e-saida">Entrada e saída<a class="headerlink" href="#entrada-e-saida" title="Permanent link">&para;</a></h2>
+<p><strong>Impressão:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;world!&quot;</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>Leitura</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+<span class="c1">// precisamos passar o tamanho máximo + 1 da nossa string. </span>
+<span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span> 
+</code></pre></div>
+<!--
+## Funções da biblioteca padrão
+
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Tamanho da string */</span>
+<span class="kt">size_t</span> <span class="nf">strlen</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">);</span> 
+
+<span class="cm">/* Devolve 0 se forem iguais,</span>
+<span class="cm">    &lt;0 se str1 vier antes de str2 e </span>
+<span class="cm">    &gt;0 se str1 vier depois de str2 */</span>
+<span class="kt">int</span> <span class="nf">strcmp</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">str1</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">str2</span><span class="p">);</span>
+
+<span class="cm">/* Copia src para dest, sendo que dest deve ter</span>
+<span class="cm">   espaço para fazer a cópia. */</span>
+<span class="kt">char</span> <span class="o">*</span><span class="nf">strcpy</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">src</span><span class="p">);</span>
+</code></pre></div>
+
+## Exercícios
+
+1. Faça um programa que lê uma linha da entrada padrão e converte a primeira letra de toda palavra para maiúsculas.
+
+1. Faça uma função `int strfind(char msg[], char tk[]);` que devolve 1 se `tk` estiver contido em `msg` e 0 caso contrário.  \pause
+
+> **Dica**: usar strcmp ajuda?
+-->
+
+<hr />
+<h1 id="matrizes">Matrizes<a class="headerlink" href="#matrizes" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="sintaxe_2">Sintaxe<a class="headerlink" href="#sintaxe_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Declaração:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">mat</span><span class="p">[</span><span class="mi">100</span><span class="p">][</span><span class="mi">200</span><span class="p">];</span>
+<span class="kt">long</span> <span class="n">mat2</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">}}</span> <span class="p">;</span> 
+</code></pre></div>
+<ul>
+<li>Acesso a elemento:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">mat2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]);</span> <span class="cm">/* 5 */</span>
+</code></pre></div>
+<ul>
+<li>Uso como parâmetro de função:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">funcao1</span><span class="p">(</span><span class="kt">long</span> <span class="n">vetor</span><span class="p">[</span><span class="mi">100</span><span class="p">][</span><span class="mi">200</span><span class="p">]);</span>
+</code></pre></div>
+<p>É obrigatório colocar a última dimensão! A primeira é facultativa, mas recomendamos colocar também.</p>
+<hr />
+<h2 id="organizacao-na-memoria_2">Organização na memória<a class="headerlink" href="#organizacao-na-memoria_2" title="Permanent link">&para;</a></h2>
+<p>Os dados de uma matriz são armazenados <em>linha a linha</em></p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">mat</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
+</code></pre></div>
+<p><img alt="" src="../imgs/Lab4/mem-array.png" /></p>
+<p><strong>É preciso conhecer a segunda dimensão para acessar os elementos!</strong></p>
+<hr />
+<h1 id="exercicios">Exercícios<a class="headerlink" href="#exercicios" title="Permanent link">&para;</a></h1>
+<p>Os exercícios da seção final do Lab 4 são mais avançados e representam o nível esperado de complexidade ao fim do mutirão. Não deixe de fazê-los!</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi, Eduardo Marossi
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.placeholder": "Digite para iniciar a busca", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.5cf3e710.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../translate_admonitions.js"></script>
+      
+    
+  </body>
+</html>

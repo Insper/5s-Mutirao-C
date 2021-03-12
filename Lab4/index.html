@@ -1,0 +1,916 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://insper.github.io/Labs-de-C/Lab4/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.5">
+    
+    
+      
+        <title>Lab 4 - Arrays, Strings e Matrizes - 5s - Labs de C - Insper Comp.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.77f3fd56.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/printing.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-4-arrays-strings-e-matrizes" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://insper.github.io/Labs-de-C/" title="5s - Labs de C - Insper Comp." class="md-header__button md-logo" aria-label="5s - Labs de C - Insper Comp.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            5s - Labs de C - Insper Comp.
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 4 - Arrays, Strings e Matrizes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Insper/Labs-de-C/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Insper/Labs-de-C
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://insper.github.io/Labs-de-C/" title="5s - Labs de C - Insper Comp." class="md-nav__button md-logo" aria-label="5s - Labs de C - Insper Comp.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    5s - Labs de C - Insper Comp.
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Insper/Labs-de-C/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Insper/Labs-de-C
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Mutirão
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Mutirão" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Mutirão
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about-mutirao/" class="md-nav__link">
+        Sobre
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab1/" class="md-nav__link">
+        Lab 1 - Conceitos Básicos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab2/" class="md-nav__link">
+        Lab 2 - Praticando
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab3/" class="md-nav__link">
+        Lab 3 - Compilação usando GCC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lab 4 - Arrays, Strings e Matrizes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lab 4 - Arrays, Strings e Matrizes
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arrays-em-c" class="md-nav__link">
+    Arrays em C
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    Strings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrizes" class="md-nav__link">
+    Matrizes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicios" class="md-nav__link">
+    Exercícios
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercícios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrays" class="md-nav__link">
+    Arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strings_1" class="md-nav__link">
+    Strings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrizes_1" class="md-nav__link">
+    Matrizes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab5/" class="md-nav__link">
+        Lab 5 - Ponteiros e `structs`
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab6/" class="md-nav__link">
+        Lab 6 - juntando tudo
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Labs
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Labs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Labs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs-extras/lab7/" class="md-nav__link">
+        07 - Tabuada
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs-extras/lab8/" class="md-nav__link">
+        08 - Vales
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arrays-em-c" class="md-nav__link">
+    Arrays em C
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    Strings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrizes" class="md-nav__link">
+    Matrizes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicios" class="md-nav__link">
+    Exercícios
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercícios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrays" class="md-nav__link">
+    Arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strings_1" class="md-nav__link">
+    Strings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrizes_1" class="md-nav__link">
+    Matrizes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Insper/Labs-de-C/edit/master/docs/Lab4.md" title="Editar esta página" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="lab-4-arrays-strings-e-matrizes">Lab 4 - Arrays, Strings e Matrizes<a class="headerlink" href="#lab-4-arrays-strings-e-matrizes" title="Permanent link">&para;</a></h1>
+<p>Na última aula trabalhamos com conceitos básicos de  <em>C</em> e com tipos de dados simples (inteiros e números fracionários). Hoje veremos as primeiras estruturas complexas em <em>C</em>: vetores, matrizes e strings. </p>
+<h2 id="arrays-em-c">Arrays em <em>C</em><a class="headerlink" href="#arrays-em-c" title="Permanent link">&para;</a></h2>
+<p>Criamos <em>arrays</em> <strong>de tamanho fixo</strong> em <em>C</em> usando a seguinte sintaxe:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">A</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+</code></pre></div>
+<p>Basta adicionar <code>[]</code> após o tipo e teremos um array de tamanho constante (i.e. não dependente da entrada do usuário). <strong>Não é possível redimensionar o array</strong>. Depois de declarado ele terá para sempre o mesmo tamanho. </p>
+<p><img alt="Representação de array de long na memória" src="../imgs/day4-arrays/mem-array.png" /></p>
+<p>O acesso a elementos também é bastante simples:</p>
+<div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+</code></pre></div>
+<p>A linha acima imprime o primeiro elemento do vetor. O uso com <code>scanf</code> segue a mesma lógica dos tipos simples:</p>
+<div class="highlight"><pre><span></span><code><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">vetor</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</code></pre></div>
+<div class="admonition question long">
+<p class="admonition-title">Question</p>
+<p>Simule o código abaixo manualmente e escreva sua saída em um papel!!</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">long</span> <span class="n">vetor</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">vetor</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Par! &quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;i: %d, vetor[i]: %ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">vetor</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>   
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition question long">
+<p class="admonition-title">Question</p>
+<p>O código acima está no arquivo <code>tarefa1.c</code>. Compile e execute ele. Os resultados foram os esperados? Se não, você consegue explicar por que eles foram diferentes?</p>
+<details class="note"><summary>Resposta</summary><p>Como podemos ver, o código compila, mas seu comportamento é indefinido por duas razões:</p>
+<ol>
+<li>O vetor não é inicializado com 0 quando é criado. </li>
+<li>A posição <code>vetor[5]</code> não é válida e pode resultar na leitura de dados inválidos da memória.</li>
+</ol>
+</details>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Diferentemente de outras linguagens, <em>C</em> não verifica os índices automaticamente nem inicializa o elementos do vetor com 0. Além disto, não é possível obter o tamanho de um vetor a partir de seu nome.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Conserte o código acima. Você deverá ler as posições do vetor usando <code>scanf</code> em um <code>for</code> e depois consertar o <code>for</code> do exemplo acima para não acessar as posições indevidas. </p>
+<p><strong>Sim, seu programa deverá ter dois <code>for</code>, um para leitura usando <code>scanf</code> que você deverá criar e o outro é o do exemplo acima, que deverá ser consertado.</strong></p>
+<p>Conserte o código acima no arquivo <code>tarefa1.c</code>. Compile e teste sua solução usando <code>make tarefa1</code>.</p>
+</div>
+<p>Um ponto importante é que o sistema de tipos não permite a conversão/passagem de vetores do mesmo tipo, mas com tamanhos diferentes. Assim, a função abaixo não aceitaria como argumento a variável <code>double arr[4]</code>, pois só aceita vetores de tamanho 3.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="nf">soma_3doubles</span><span class="p">(</span><span class="kt">double</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Para fazê-la aceitar vetores de tamanho qualquer poderíamos mudar sua assinatura para não checar o tamanho do vetor e passá-lo como argumento da função. </p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="nf">soma</span><span class="p">(</span><span class="kt">double</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Trabalharemos com o arquivo <code>tarefa2.c</code>. Abra-o e implemente, no local indicado, a função <code>soma</code> com a assinatura acima. Lembre-se que em <em>C</em> arrays não conhecem seu tamanho, então é de sua responsabilidade acessar somente elementos válidos e checar se o vetor não está vazio (ou seja, <code>n &lt; 1</code>)</p>
+</div>
+<div class="admonition question short">
+<p class="admonition-title">Question</p>
+<p>O arquivo usado acima contém vários testes na função <code>main</code>. Leia a função <code>main</code> e escreva abaixo a notação usada para inicializar um array com valores constantes. Como você inicializaria um vetor de <code>int</code> com os valores <span><span class="MathJax_Preview">0, 2, 3, 2, 5</span><script type="math/tex">0, 2, 3, 2, 5</script></span>?</p>
+</div>
+<h2 id="strings">Strings<a class="headerlink" href="#strings" title="Permanent link">&para;</a></h2>
+<p>Como visto na expositiva, strings são arrays de caracteres sendo que o último elemento da string contém um caractere <code>'\0'</code>. Logo, uma string declarada como <code>char str[100]</code> pode guardar strings de <strong>até 99</strong> caracteres (mais 1 para o <code>'\0'</code>). Se a string tiver comprimento menor o restante das posições simplesmente não é utilizado.</p>
+<p><img alt="String é um vetor de char terminado em '\0'." src="../imgs/Lab4/mem-str.svg" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Em C podemos usar: <code>\0</code>, <code>NULL</code>, e <code>0</code> para representar a mesma coisa!</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Uma <em>string</em> em <em>C</em> nada mais é do que um <em>array</em> do tipo <code>char</code> cujo último elemento é um <code>\0</code>. 
+As duas linhas abaixo tem o mesmo efeito. 
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;insper&quot;</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">arr2</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">&#39;i&#39;</span><span class="p">,</span> <span class="sc">&#39;n&#39;</span><span class="p">,</span> <span class="sc">&#39;s&#39;</span><span class="p">,</span> <span class="sc">&#39;p&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">,</span> <span class="sc">&#39;r&#39;</span><span class="p">,</span> <span class="sc">&#39;\0&#39;</span><span class="p">};</span>
+</code></pre></div>
+Claramente a primeira é muito mais conveniente ;)</p>
+</div>
+<div class="admonition question short">
+<p class="admonition-title">Question</p>
+<p>Em <em>C</em>, qual a diferença entre <code>"a"</code> e <code>'a'</code>? </p>
+</div>
+<p>Para imprimir uma string no terminal basta usar o código <code>%s</code> na string de formatação do printf:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;world!&quot;</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+</code></pre></div>
+<p>Já a leitura de strings é feita usando a função <em>fgets</em>, que recebe um array de <code>char</code> com tamanho <code>n</code> e lê até <code>n-1</code> caracteres de um arquivo ou do terminal. <em>fgets</em> para quando encher o vetor ou quando encontrar uma quebra de linha <code>\n</code>. No exemplo abaixo, <code>stdin</code> (<em>Standard Input</em>) representa o terminal. </p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define STRING_LEN 10          </span><span class="c1">// Tamanho da string 0..9</span>
+
+<span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="n">STRING_LEN</span><span class="p">];</span>
+<span class="n">fgets</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">STRING_LEN</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span> <span class="c1">// precisamos passar o tamanho máximo</span>
+                               <span class="c1">// + 1 da nossa string. </span>
+</code></pre></div>
+<div class="admonition question short">
+<p class="admonition-title">Question</p>
+<p>Para iterar sobre todos os caracteres de uma string precisamos saber seu tamanho? Como podemos fazer isto? <strong>Dica</strong>: reveja a imagem e o exemplo de código do começo da seção.</p>
+<details class="note"><summary>Solução</summary><p>O último caractere de uma string é sempre <code>'\0'</code>! Logo, podemos percorrer os caracteres até que um <code>'\0'</code> seja encontrado.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Crie uma função que:</p>
+<ol>
+<li>recebe uma string de tamanho máximo 100</li>
+<li>conte o número de vezes que a letra "a" aparece</li>
+<li>retorne este valor.</li>
+</ol>
+<p>Implemente no arquivo <code>tarefa3.c</code> e teste com <code>make tarefa3</code></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>E se fosse necessário contar o número de caracteres "1"? Implemente no arquivo <code>tarefa4.c</code> e teste com <code>make tarefa4</code></p>
+</div>
+<h2 id="matrizes">Matrizes<a class="headerlink" href="#matrizes" title="Permanent link">&para;</a></h2>
+<p>Como visto na expositiva, matrizes em <em>C</em> nada mais são que vetores colocados um após o outro.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">mat</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="n">mat</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]);</span> <span class="cm">/* acessa linha 0, coluna 3 */</span>
+
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">mat</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// armazena inteiro digitado na posição 1,5</span>
+</code></pre></div>
+<p><img alt="Representação de matriz de inteiros na memória" src="../imgs/day4-arrays/mem-mat.png" /></p>
+<p>Perceba que toda a primeira linha é armazenada (contendo 3 <code>long</code>s) antes do início da segunda linha. Ou seja, a matriz é armazenada "deitada" na memória, uma linha após a outra.</p>
+<div class="admonition question short">
+<p class="admonition-title">Question</p>
+<p>Levando em conta que a matriz é guardada como na figura acima, em qual posição da memória estão armazenados os seguintes elementos? Você deve contar a partir do primeiro elemento (<code>mat[0][0]</code>).</p>
+<ul>
+<li><code>mat[0][2]</code></li>
+<li><code>mat[1][2]</code></li>
+<li><code>mat[2][0]</code> </li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As próximas tarefas devem ser feitas a partir de um arquivo vazio e compiladas usando os conhecimentos que vocês obtiveram no <a href="/Lab3">Lab 3</a>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Faça, do zero, um programa que lê uma matriz <span><span class="MathJax_Preview">5\times 4</span><script type="math/tex">5\times 4</script></span> e imprime no terminal a soma de cada uma de suas colunas. </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Modifique seu programa acima para, além das somas de cada coluna, imprimir também o índice da coluna de maior valor.</p>
+</div>
+<h2 id="exercicios">Exercícios<a class="headerlink" href="#exercicios" title="Permanent link">&para;</a></h2>
+<p>Agora que já trabalhamos um pouco com <em>arrays</em>, <em>strings</em> e matrizes está na hora de praticar com exercícios mais complexos. Estes exercícios não são opcionais, sua realização é essencial para cumprir os objetivos do Mutirão. </p>
+<h3 id="arrays">Arrays<a class="headerlink" href="#arrays" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Escreva, do zero, um programa que </p>
+<ol>
+<li>Leia um inteiro <code>n</code> do terminal (número de elementos do vetor)</li>
+<li>Leia <code>n</code> números fracionários e guardá-los em um array.</li>
+<li>Chame uma função para calcular a média do vetor.</li>
+<li>Imprima a média calculada.</li>
+</ol>
+<p>Seu programa deverá calcular a média usando uma função <code>avg</code> escrita por você mesmo e pode supor que <code>n &lt; 100</code>. Para facilitar seus testes, escreva dois arquivos de entrada e use <code>&lt;</code> para rodar o programa. </p>
+<p><mark>Atenção, em C não podemos fazer isso:</mark>
+<div class="highlight"><pre><span></span><code>    <span class="kt">int</span> <span class="n">s</span><span class="p">;</span> 
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+    <span class="kt">long</span> <span class="n">vec</span><span class="p">[</span><span class="n">s</span><span class="p">];</span>
+</code></pre></div></p>
+<p>C não suporta alocar memória dinâmica para um vetor. Sugerimos
+vocês criarem um vetor de uma tamanho maior que o usuário
+possa querer usar. Existe uma solução, mas vamos ver mais
+para frente (<code>malloc</code>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Modifique seu programa acima para que ele imprima também a variância do vetor. </p>
+</div>
+<h3 id="strings_1">Strings<a class="headerlink" href="#strings_1" title="Permanent link">&para;</a></h3>
+<div class="admonition question long">
+<p class="admonition-title">Question</p>
+<p>Escreva abaixo uma função que recebe uma string como parâmetro e retorna 1 se ela é um palíndromo ou 0 caso contrário.</p>
+</div>
+<div class="admonition question medium">
+<p class="admonition-title">Question</p>
+<p>Um aluno fez a seguinte função para cópia de strings. </p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">copia_string</span><span class="p">(</span><span class="kt">char</span> <span class="n">str1</span><span class="p">[],</span> <span class="kt">char</span> <span class="n">str2</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">str1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">&#39;\0&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">str2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">str1</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Existem pelo menos dois problemas graves neste código. Você consegue identificá-los? </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Faça, do zero, um programa que leia uma string (tamanho máximo 200) e crie uma nova string trocando toda letra por maiúsculas. Seu programa deverá imprimir a string original e sua versão em maiúsculas. Seu programa deve funcionar para strings contendo números, símbolos, espaços e letras maiúsculas e minúsculas. Consulte a tabela abaixo, se necessário. </p>
+<p><img alt="Tabela ASCII com valores em decimal e hexa" src="http://www.asciichars.com/_site_media/ascii/ascii-chars-landscape.jpg" /></p>
+</div>
+<h3 id="matrizes_1">Matrizes<a class="headerlink" href="#matrizes_1" title="Permanent link">&para;</a></h3>
+<p>O formato de imagens mais simples existente é o <code>pgm</code>, que reprenta uma imagem em níveis de cinza como uma matriz com valores entre 0 (para preto) e 255 (para branco). Seu formato é o seguinte.</p>
+<div class="highlight"><pre><span></span><code>P2
+W H
+255
+.........
+</code></pre></div>
+<p>Ou seja, primeiro lemos uma linha com a string "P2", depois dois inteiros <code>w</code> e <code>h</code> representando a largura e a altura da imagem, depois o valor 255. Então lemos <code>w * h</code> valores representando os pixels da imagem. Disponibilizamos várias imagens de exemplo na pasta <a href="https://github.com/Insper/Labs-de-C/tree/master/Lab4/exemplos">/Lab4/exemplos</a>. Vocês podem abrí-las com qualquer editor de texto para ver seu conteúdo. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Nas tarefas abaixo estamos supondo que você usa <code>&lt;</code> para passar o conteúdo das imagens exemplo para seu programa no terminal e <code>&gt;</code> para salvar o resultado do terminal em uma nova imagem <em>pgm</em>.</p>
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code>$ ./tarega9 &lt; entrada1.pgm
+</code></pre></div>
+</div>
+<p>Para as tarefas abaixo você pode supor que as imagens tem tamanho máximo <span><span class="MathJax_Preview">512\times 512</span><script type="math/tex">512\times 512</script></span>. Para deixar seu código mais limpo, defina duas constantes <code>MAXW</code> e <code>MAXH</code> para guardar estes valores. </p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Crie, do zero, um programa que lê o cabeçalho de uma imagem <em>pgm</em> (primeiras três linhas) passada no terminal e imprima as dimensões da imagem. Não se esqueça de ler também o número <code>255</code> na terceira linha.</p>
+<p>Dica, de como ler a primeira linha do arquivo de imagem:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// arquivo tarefa9.c</span>
+<span class="c1">// </span>
+<span class="c1">// 1. compilar tarefa9.c</span>
+<span class="c1">// 2. executar com: ./tarefa9 &lt; entrada1.pgm</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">linha</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">var</span><span class="p">;</span>
+
+    <span class="c1">// header</span>
+    <span class="n">fgets</span><span class="p">(</span><span class="n">linha</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="n">linha</span><span class="p">);</span>
+
+    <span class="c1">// W</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">var</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;W %d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">var</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Agora você pode continuar lendo na sequência com <code>fgets</code> ou <code>scanf</code>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Crie uma função <code>void le_imagem(int mat[MAXH][MAXW], int w, int h)</code> que lê os valores da matriz da imagem e os escreve em <code>mat</code>. </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Crie uma função <code>void escreve_imagem(int max[MAXH][MAXW], int w, int h)</code> que escreve o cabeçalho e todos os pixels de uma imagem no terminal seguindo o formato <em>pgm</em> descrito acima.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Verifique que seu programa está correto fazendo uma função <code>main</code> que simplesmente lê uma imagem e logo em seguida a escreve no terminal. Verifique visualmente que a imagem de saída é igual a original. </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Finalmente, crie uma função <code>void limiar(int max[MAXH][MAXW], int w, int h, int lim)</code> que aplica um limiar de 127 na imagem e chame-a na sua função <code>main</code>. Verifique visualmente que a imagem de saída é a esperada. </p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../Lab3/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Lab 3 - Compilação usando GCC
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Lab5/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              Lab 5 - Ponteiros e `structs`
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi, Eduardo Marossi
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.placeholder": "Digite para iniciar a busca", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.5cf3e710.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../translate_admonitions.js"></script>
+      
+    
+  </body>
+</html>

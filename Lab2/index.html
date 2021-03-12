@@ -1,0 +1,853 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://insper.github.io/Labs-de-C/Lab2/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.5">
+    
+    
+      
+        <title>Lab 2 - Praticando - 5s - Labs de C - Insper Comp.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.77f3fd56.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/printing.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-2-praticando" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://insper.github.io/Labs-de-C/" title="5s - Labs de C - Insper Comp." class="md-header__button md-logo" aria-label="5s - Labs de C - Insper Comp.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            5s - Labs de C - Insper Comp.
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 2 - Praticando
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Insper/Labs-de-C/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Insper/Labs-de-C
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://insper.github.io/Labs-de-C/" title="5s - Labs de C - Insper Comp." class="md-nav__button md-logo" aria-label="5s - Labs de C - Insper Comp.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    5s - Labs de C - Insper Comp.
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Insper/Labs-de-C/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Insper/Labs-de-C
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Mutirão
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Mutirão" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Mutirão
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about-mutirao/" class="md-nav__link">
+        Sobre
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab1/" class="md-nav__link">
+        Lab 1 - Conceitos Básicos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lab 2 - Praticando
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lab 2 - Praticando
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercicios-avancados" class="md-nav__link">
+    Exercícios Avançados
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab3/" class="md-nav__link">
+        Lab 3 - Compilação usando GCC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab4/" class="md-nav__link">
+        Lab 4 - Arrays, Strings e Matrizes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab5/" class="md-nav__link">
+        Lab 5 - Ponteiros e `structs`
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab6/" class="md-nav__link">
+        Lab 6 - juntando tudo
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Labs
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Labs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Labs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs-extras/lab7/" class="md-nav__link">
+        07 - Tabuada
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs-extras/lab8/" class="md-nav__link">
+        08 - Vales
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercicios-avancados" class="md-nav__link">
+    Exercícios Avançados
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Insper/Labs-de-C/edit/master/docs/Lab2.md" title="Editar esta página" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="lab-2-praticando">Lab 2 - Praticando<a class="headerlink" href="#lab-2-praticando" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>Pasta</th>
+<th>Arquivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code/02-praticando</code></td>
+<td><code>main.c</code></td>
+</tr>
+</tbody>
+</table>
+<p>Agora que praticamos um pouco no papel (de novo, habilidade fundamental para
+qualquer programador), vamos voltar ao computador.</p>
+<p>Vamos começar analisando o código disponível na pasta <code>code/02-praticando/main.c</code></p>
+<div class="highlight"><pre><span></span><code>    <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+    <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul>
+<li>Abra o arquivo  <code>main.c</code> no seu editor de códigos preferidos</li>
+<li>Abra um terminal na pasta <code>code/02-praticando/</code></li>
+<li>Para compilar e executar o programa execute no terminal: <code>make</code></li>
+</ul>
+</div>
+<p>Novamente, temos um código curto mas com vários conceitos importantes:</p>
+<ul>
+<li>
+<p>a função <code>main</code> equivale ao método <code>main</code> em Java, ou seja, é a função
+  <em>principal</em>, chamada quando o programa é rodado;</p>
+</li>
+<li>
+<p>diferente de Java, no entanto, essa função é <code>int</code> em vez de <code>void</code>, pois
+  devolve um código que indica se o programa foi bem-sucedido ou não;</p>
+</li>
+<li>
+<p>por enquanto, consideraremos apenas a devolução do código <code>0</code>, que indica que
+  o programa foi, sim,  bem-sucedido;</p>
+</li>
+<li>
+<p><code>#include</code> equivale ao <code>import</code> em Python e Java, ou seja, amplia o conjunto
+  de funcionalidades que o programa pode usar;</p>
+</li>
+<li>
+<p>de fato, é justamente por causa do <code>#include &lt;stdio.h&gt;</code> que o programa pode
+  usar a função <code>printf</code>.</p>
+</li>
+<li>
+<p><code>printf</code> corresponde à <code>System.out.print</code> em Java, ou seja, é a função
+  responsável por imprimir texto no terminal.</p>
+</li>
+</ul>
+<p>No entanto, existe uma diferença de uso entre a <code>printf</code> do C e a
+<code>System.out.print</code> do Java. O código abaixo <em>não</em> vai funcionar.</p>
+<div class="highlight"><pre><span></span><code>    <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+    <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World: &quot;</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="n">m</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>A função <code>printf</code> usa um sistema de <em>interpolação</em> para exibir valores:</p>
+<div class="highlight"><pre><span></span><code>    <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+    <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World: %d, %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>O código acima significa "substitua as duas ocorrências de <code>%d</code> pelos valores de
+<code>n</code> e <code>m</code>, pela ordem". Parece complicado, mas note que na verdade é uma sintaxe
+mais limpa que a do Java, sem a necessidade de ficar somando strings.</p>
+<p>O símbolo a ser substituído é sempre <code>%</code> seguido de letras que representam o
+tipo do valor. A letra <code>d</code> (de "decimal") representa <code>int</code>, enquanto as letras
+<code>lf</code> (de "long float") representam <code>double</code>.</p>
+<div class="highlight"><pre><span></span><code>    <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+    <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">n</span> <span class="o">=</span> <span class="mf">1.2</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">m</span> <span class="o">=</span> <span class="mf">2.1</span><span class="p">;</span>
+
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World: %lf, %lf&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Antes de apresentar outros conceitos, vamos praticar um pouco.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Assim como no lab anterior, cada tarefa já tem um arquivo correspondente. Digite <code>make tarefaN</code> para compilar e rodar a tarefa <code>N</code>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">s</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Esse código <strong>errado</strong> já apareceu no laboratório anterior. Ele deveria
+calcular a soma de <code>1</code> a <code>10</code>.</li>
+</ul>
+<p>Rode o código corrigido e faça ele imprimir o resultado com <code>printf()</code></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">s</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Esse código <strong>errado</strong> já apareceu no laboratório anterior. Ele deveria calcular a
+<em>metade</em> da soma dos númereos de <code>1</code> a <code>10</code></li>
+</ul>
+<p>Rode o código corrigido e faça ele imprimir o resultado correto</p>
+</div>
+<p>Vamos agora finalmente escrever um programa com interação de usuário!</p>
+<div class="highlight"><pre><span></span><code>    <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+    <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Digite um número: &quot;</span><span class="p">);</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;O número digitado é: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Enquanto a função <code>printf</code> usa o símbolo <code>%d</code> para indicar que quer "escrever um
+inteiro", a função <code>scanf</code> usa o símbolo <code>%d</code> para indicar que quer "ler um
+inteiro".</p>
+<p>Note também uma diferença importantíssima entre <code>printf</code> e <code>scanf</code>: apenas no
+segundo há um <code>&amp;</code> antes da variável. Os detalhes técnicos disso serão revelados
+na segunda aula de quarta, mas por enquanto mantenha em mente que <strong>se você
+esquecer o <code>&amp;</code>, o <code>scanf</code> não vai funcionar</strong>.</p>
+<p>Preparados para um exemplo mais avançado? O próximo mostra de uma só vez:</p>
+<ul>
+<li>
+<p>inclusão de outra biblioteca além de <code>stdio.h</code>;</p>
+</li>
+<li>
+<p>definição de uma constante;</p>
+</li>
+<li>
+<p>implementação e chamada de uma função própria.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>    <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+    <span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="c1">    /* &lt;---- precisa incluir!!! */</span><span class="cp"></span>
+
+    <span class="cp">#define PI 3.141592</span>
+
+    <span class="kt">void</span> <span class="nf">print_trigo</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;seno: %lf, cosseno: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">angle</span><span class="p">;</span>
+
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Digite um ângulo em graus: &quot;</span><span class="p">);</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">angle</span><span class="p">);</span>
+
+        <span class="n">print_trigo</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Vejamos o que há de novo no código:</p>
+<ul>
+<li>
+<p>adicionamos <code>#include &lt;math.h&gt;</code> e, por causa disso, pudemos usar as funções
+  trigonométricas <code>sin</code> e <code>cos</code> para calcular seno e cosseno respectivamente;</p>
+</li>
+<li>
+<p>definimos a constante <code>PI</code> como sendo o real <code>3.141592</code>;</p>
+</li>
+<li>
+<p>implementamos e chamamos a função <code>print_trigo</code>, que não precisa de <code>return</code>
+  por ser do tipo <code>void</code>;</p>
+</li>
+</ul>
+<p>A diferença entre variáveis e constantes é que, enquanto uma variável é... er...
+variável, uma constante é... er... constante, ou seja, não pode ser alterada: o
+código <code>PI = 5</code> causaria um erro.</p>
+<p>Por falar em <code>PI</code>, reparou que definimos a constante mas nunca a usamos? Na
+verdade, não foi um acidente...</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Qual é o problema no código acima? A dica já está dada: para ser resolvido,
+precisamos usar <code>PI</code>...</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Resolva o problema!</p>
+</div>
+<div class="admonition warning">
+<p>Não continue antes de validar suas respostas com um dos
+professores. Esse tipo de exercício será avaliado ao longo do semestre.</p>
+</div>
+<h2 id="exercicios-avancados">Exercícios Avançados<a class="headerlink" href="#exercicios-avancados" title="Permanent link">&para;</a></h2>
+<p>Mesmo que não dê tempo de fazer esses exercícios em sala, é muito importante
+que você os faça até quarta para desenferrujar programação e praticar C.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Escreva uma função que recebe um inteiro e devolve o <em>módulo</em> desse inteiro.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Escreva uma função que recebe quatro inteiros, representando as coordenadas
+de dois pontos no plano cartesiano, e devolve a <em>distância de Manhattan</em>
+(pesquise) entre esses pontos. Vocês já fiazeram esse exercício em
+<em>Desenvolvimento Colaborativo Ágil</em>.</p>
+</div>
+<p>Assim como o <code>for</code> padrão do Java, o <code>for</code> do C não funciona como o <code>for</code> do Python.
+Na verdade, é apenas um "açúcar sintático" que facilita a escrita de loops:</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">instrução</span>
+        <span class="n">instrução</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>equivale a</p>
+<div class="highlight"><pre><span></span><code>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">instrução</span>
+        <span class="n">instrução</span>
+        <span class="p">...</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Em Java existe o <em>enhanced for</em>, que é mais parecido com o <code>for</code> do Python, mas
+não existe uma equivalência disso em C. Bem-vindos ao baixo nível! Não temos
+bolo, mas temos os ingredientes para você fazer um bolo.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Escreva uma função que recebe um inteiro <em>n</em> e, para cada inteiro <em>i</em> entre
+<em>1</em> e <em>n</em>, imprime uma string conforme a seguinte regra:</p>
+<ul>
+<li>
+<p>"nenhum" se <em>i</em> não for múltiplo de <em>3</em> nem <em>5</em>;</p>
+</li>
+<li>
+<p>"apenas por três" se <em>i</em> for múltiplo de <em>3</em> mas não de <em>5</em>;</p>
+</li>
+<li>
+<p>"apenas por cinco" se <em>i</em> for múltiplo de <em>5</em> mas não de <em>3</em>;</p>
+</li>
+<li>
+<p>"por três e por cinco" se <em>i</em> for múltiplo de <em>3</em> e <em>5</em>.</p>
+</li>
+</ul>
+<p>Escreva duas versões: uma usando <code>while</code>s e outra usando <code>for</code>s.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Escreva uma função que recebe um inteiro <em>n</em> e imprime uma "arvorezinha"
+conforme a regra abaixo.</p>
+<p><em>n = 1</em>
+<div class="highlight"><pre><span></span><code>     |
+</code></pre></div>
+<em>n = 2</em></p>
+<p><div class="highlight"><pre><span></span><code>     |
+    /|\
+</code></pre></div>
+<em>n = 3</em></p>
+<p><div class="highlight"><pre><span></span><code>      |
+     /|\
+    //|\\
+</code></pre></div>
+e assim em diante para <em>n = 4, 5, 6...</em>.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../Lab1/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Lab 1 - Conceitos Básicos
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Lab3/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              Lab 3 - Compilação usando GCC
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi, Eduardo Marossi
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.placeholder": "Digite para iniciar a busca", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.5cf3e710.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../translate_admonitions.js"></script>
+      
+    
+  </body>
+</html>

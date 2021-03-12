@@ -1,0 +1,989 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://insper.github.io/Labs-de-C/Lab1/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.5">
+    
+    
+      
+        <title>Lab 1 - Conceitos Básicos - 5s - Labs de C - Insper Comp.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.77f3fd56.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/printing.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-1-conceitos-basicos" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://insper.github.io/Labs-de-C/" title="5s - Labs de C - Insper Comp." class="md-header__button md-logo" aria-label="5s - Labs de C - Insper Comp.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            5s - Labs de C - Insper Comp.
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 1 - Conceitos Básicos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Insper/Labs-de-C/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Insper/Labs-de-C
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://insper.github.io/Labs-de-C/" title="5s - Labs de C - Insper Comp." class="md-nav__button md-logo" aria-label="5s - Labs de C - Insper Comp.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    5s - Labs de C - Insper Comp.
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Insper/Labs-de-C/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Insper/Labs-de-C
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Mutirão
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Mutirão" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Mutirão
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about-mutirao/" class="md-nav__link">
+        Sobre
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lab 1 - Conceitos Básicos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lab 1 - Conceitos Básicos
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#comecando" class="md-nav__link">
+    Começando
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicios-basicos" class="md-nav__link">
+    Exercícios Básicos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicios-intermediarios" class="md-nav__link">
+    Exercícios Intermediários
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab2/" class="md-nav__link">
+        Lab 2 - Praticando
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab3/" class="md-nav__link">
+        Lab 3 - Compilação usando GCC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab4/" class="md-nav__link">
+        Lab 4 - Arrays, Strings e Matrizes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab5/" class="md-nav__link">
+        Lab 5 - Ponteiros e `structs`
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lab6/" class="md-nav__link">
+        Lab 6 - juntando tudo
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Labs
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Labs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Labs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs-extras/lab7/" class="md-nav__link">
+        07 - Tabuada
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs-extras/lab8/" class="md-nav__link">
+        08 - Vales
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#comecando" class="md-nav__link">
+    Começando
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicios-basicos" class="md-nav__link">
+    Exercícios Básicos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicios-intermediarios" class="md-nav__link">
+    Exercícios Intermediários
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Insper/Labs-de-C/edit/master/docs/Lab1.md" title="Editar esta página" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="lab-1-conceitos-basicos">Lab 1 - Conceitos Básicos<a class="headerlink" href="#lab-1-conceitos-basicos" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>Pasta</th>
+<th>Arquivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code/01-intro</code></td>
+<td><code>main.c</code></td>
+</tr>
+</tbody>
+</table>
+<p>Para começar você deve clonar o repositório <code>https://github.com/Insper/Labs-de-C/</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Infra</p>
+<p>Os laboratórios do mutirão foram planejados para funcionar
+no Linux, e você deve ter executado:</p>
+<ul>
+<li><code>sudo apt install build-essential libsystemd-dev</code></li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Testando</p>
+<p>No terminal do Linux dentro da pasta <code>code/01-intro</code> execute o comando: <code>make</code>, se tudo der certo, o programa carrega a imagem: <code>deepak-kumar-rX9uFci3pfY-unsplash.pgm</code> e gera a imagem <code>image-out.pgm</code>.</p>
+</div>
+<h2 id="comecando">Começando<a class="headerlink" href="#comecando" title="Permanent link">&para;</a></h2>
+<p>Não é fácil prever o quanto a linguagem C será uma novidade para vocês. Por um
+lado, a sintaxe é muito parecida com Java. Por outro lado, existem diferenças
+importantes e vocês estão longe de Java há mais ou menos meio semestre...</p>
+<p>Vamos começar com a revisão de alguns conceitos bem básicos. Dê uma olhada no arquivo <code>main.c</code>:</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>
+<p>Você pode abrir o arquivo no editor de código que preferir, indicamos abrir no
+vscode.</p>
+</li>
+<li>
+<p>Será necessário um terminal para executar o comando <code>make</code>, você pode usar o
+terminal do próprio vscode, ou do linux.</p>
+</li>
+</ul>
+</div>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;stdio.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;pgm.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#define IMG_IN  &quot;deepak-kumar-rX9uFci3pfY-unsplash.pgm&quot;</span>
+<span class="cp">#define IMG_OUT &quot;image-out.pgm&quot;</span>
+
+<span class="c1">// Esta função estará nos arquivos tarefaX.c</span>
+<span class="kt">int</span> <span class="nf">process_pixel</span><span class="p">(</span><span class="kt">int</span> <span class="n">level</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">new_level</span><span class="p">;</span>
+
+    <span class="n">new_level</span> <span class="o">=</span> <span class="n">level</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">new_level</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="n">PGMData</span> <span class="n">image</span><span class="p">;</span>
+    <span class="n">readPGM</span><span class="p">(</span><span class="n">IMG_IN</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">image</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">x</span><span class="o">&lt;</span> <span class="n">image</span><span class="p">.</span><span class="n">row</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">y</span><span class="o">&lt;</span><span class="n">image</span><span class="p">.</span><span class="n">col</span><span class="p">;</span> <span class="n">y</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">image</span><span class="p">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">process_pixel</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">writePGM</span><span class="p">(</span><span class="n">IMG_OUT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">image</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Note que existem duas funções: <code>main</code> e <code>process_pixel</code>, a primeira é a função
+que será sempre executada primeiro, a <code>process_pixel</code> é executada para cada
+pixel da imagem de entrada (o gatinho).</p>
+<p>Neste lab iremos praticar e modificar a função <code>process_pixel</code>. Essa função é trivial, mas no código já vemos vários conceitos importantes:</p>
+<ul>
+<li>
+<p>as instruções terminam em ponto-e-vírgula, como em Java;</p>
+</li>
+<li>
+<p><code>new_level</code> é uma variável da função e precisa ser <em>declarada</em> para poder ser
+  usada, como em Java;</p>
+</li>
+<li>
+<p>valores e variáveis possuem <em>tipo</em>, pois C é uma linguagem com <em>tipagem
+  forte</em>, como Java;</p>
+</li>
+<li>
+<p>a declaração de uma variável segue a sintaxe <code>tipo nome</code>, como em Java;</p>
+</li>
+<li>
+<p><code>int</code> é o tipo que representa números inteiros, como em Java;</p>
+</li>
+<li>
+<p>como tipagem forte significa que <em>tudo</em>, sem exceção, tem tipo, <code>int</code> também
+  aparece antes da declaração do parâmetro <code>level</code>, indicando que esse parâmetro
+  é um número inteiro, e antes do próprio nome da função, indicando que
+  <code>process_pixel</code> devolve um número inteiro;</p>
+</li>
+<li>
+<p>essa devolução, aliás, é feita através da instrução <code>return</code>, como em Python e
+  Java;</p>
+</li>
+<li>
+<p>também em comum com Python e Java, temos o operador <code>=</code> de atribuição.</p>
+</li>
+</ul>
+<p>Na verdade, soa um pouco injusto ficar dizendo "como em Java" e "como em
+Python", pois na verdade C veio antes de ambas!</p>
+<p>Enfim, mesmo com a ferrugem pós-férias, vocês já devem ter percebido que essa
+fantástica função faz... nada de útil. Ela apenas copia o valor do parâmetro
+<code>level</code> para a variável <code>new_level</code> e devolve o valor de <code>new_level</code>. Em outras
+palavras, apenas devolve o valor original de <code>level</code>, sem fazer nenhum tipo de
+processamento. Yay!</p>
+<p>Vejamos o contexto no qual essa função está sendo chamada.</p>
+<div class="highlight"><pre><span></span><code> <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">x</span><span class="o">&lt;</span> <span class="n">image</span><span class="p">.</span><span class="n">row</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">y</span><span class="o">&lt;</span><span class="n">image</span><span class="p">.</span><span class="n">col</span><span class="p">;</span> <span class="n">y</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">image</span><span class="p">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">process_pixel</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Hoje vocês não precisam saber todos os detalhes desse código (isso acontecerá na
+primeira aula de quarta), apenas que esses loops substituem o valor original de
+cada <em>pixel</em> da imagem pelo resultado devolvido por <code>process_pixel</code>, calculado a
+partir desse valor original.</p>
+<p>Como acabamos de ver que a função simplesmente devolve o mesmo valor, então a
+imagem permanece inalterada. Vamos fazer algo mais interessante?</p>
+<h2 id="exercicios-basicos">Exercícios Básicos<a class="headerlink" href="#exercicios-basicos" title="Permanent link">&para;</a></h2>
+<p>Para todos os exercícios deste handout, sigam por favor as regras abaixo.</p>
+<ol>
+<li>
+<p>Todos os enunciados dizem "o que" a função deve fazer, mas não dizem "como"
+   ela deve fazer. Essa restrição é proposital! Não pergunte "como", pois
+   descobrir isso é justamente uma das habilidades que vocês precisam exercitar
+   para as três disciplinas.</p>
+</li>
+<li>
+<p>Ao terminar um exercício, chame um dos professores para testemunhar o
+   programa funcionando e validar o código. Não avance no guia até fazer isso,
+   para termos certeza que você está passando por todo o processo.</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p>Lembrete: Para cada questão, validar a resposta com a imagem referência antes de continuar</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Os exercícios abaixo deverão ser feitos nos arquivos <code>tarefaX.c</code></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>O valor de um pixel é um número inteiro entre <code>0</code> e <code>255</code>. Quanto mais alto
+o valor, mais claro é o pixel. Sabendo disso, altere <code>process_pixel</code> para
+<em>negativizar</em> a imagem, ou seja, transformar pixels claros em escuros e
+vice-versa.</p>
+<table>
+<thead>
+<tr>
+<th>Solução correta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../lab1-solucao/tarefa1.png" width="250" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Testando</p>
+<p>No terminal do Linux dentro da pasta <code>code/01-intro</code> execute o comando: <code>make tarefa1</code>, se tudo der certo, o programa carrega a imagem: <code>deepak-kumar-rX9uFci3pfY-unsplash.pgm</code> e gera a imagem <code>image-out.pgm</code>.</p>
+<p><mark>Você deve abrir a imagem <code>image-out.pgm</code> para ver o resultado.</mark></p>
+<p>Faça isso também para as tarefas seguintes.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Agora altere <code>process_pixel</code> para <em>escurecer</em> a imagem: cada pixel deve
+ficar com a metade de sua luminosidade original.</p>
+<table>
+<thead>
+<tr>
+<th>Solução correta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../lab1-solucao/tarefa2.png" width="250" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Antes do próximo exercício, uma dica! A sintaxe de <code>if/else</code> em C, para variar,
+é como em Java. Ou seja:</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">if</span><span class="p">(</span><span class="n">condição</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">instrução</span>
+        <span class="n">instrução</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="n">instrução</span>
+        <span class="n">instrução</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Sabendo disso...</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Altere <code>process_pixel</code> para receber um segundo parâmetro, também inteiro, e
+<em>limiarizar</em> a imagem:</p>
+<ul>
+<li>
+<p>se o valor original do pixel for menor que esse segundo parâmetro, seu novo
+  valor deve ser <code>0</code> (preto);</p>
+</li>
+<li>
+<p>se o valor original do pixel for maior ou igual que esse segundo parâmetro,
+  seu novo valor deve ser <code>255</code> (branco).</p>
+</li>
+</ul>
+<p>Não esqueça de alterar o trecho de código em que <code>process_pixel</code> é chamada,
+para evitar erros de compilação. Passe <code>127</code> como o segundo parâmetro da
+chamada. <strong>Aqui você precisará modificar <code>main.c</code> para passar esse argumento.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Solução correta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../lab1-solucao/tarefa3.png" width="250" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Altere <code>process_pixel</code> para manipular o <em>brilho</em> da imagem: use o segundo
+parâmetro, adicionado no exercício anterior, como um valor que é <em>somado</em> ao
+pixel. Faça vários testes, passando múltiplos valores como o segundo
+parâmetro da chamada.</p>
+<div class="admonition info">
+<p>Usando o valor 127 no segundo argumento. <strong>Aqui você precisará modificar <code>main.c</code> para passar esse argumento.</strong></p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Solução correta</th>
+<th>Solução errada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../lab1-solucao/tarefa4-127-correto.png" width="250" /></td>
+<td><img alt="" src="../lab1-solucao/tarefa4-127-errado.png" width="250" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Altere <code>process_pixel</code> para manipular o <em>contraste</em> da imagem: use o segundo
+parâmetro como um valor que <em>multiplica</em> o pixel. Novamente, faça vários
+testes, passando múltiplos valores como o segundo parâmetro da chamada.</p>
+<div class="admonition info">
+<p>Usando o valor 5 no segundo argumento. <strong>Aqui você precisará modificar <code>main.c</code> para passar esse argumento.</strong></p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Solução correta</th>
+<th>Solução errada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../lab1-solucao/tarefa5-5-correto.png" width="250" /></td>
+<td><img alt="" src="../lab1-solucao/tarefa5-5-errado.png" width="250" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Nesses exercícios preliminares, vocês já usaram os operadores aritméticos
+básicos (<code>+</code>, <code>-</code>, <code>/</code>, <code>*</code>), execução condicional (<code>if/else</code>) e a estrutura
+básica de funções.</p>
+<h2 id="exercicios-intermediarios">Exercícios Intermediários<a class="headerlink" href="#exercicios-intermediarios" title="Permanent link">&para;</a></h2>
+<p>Vamos agora sair do <code>make</code> por alguns instantes e fazer os próximos exercícios
+"no papel", ou seja, sem ficar dependendo de rodar para ver se seu código faz
+sentido. É muito importante que, pelo menos nesse começo, você não fique
+excessivamente dependente do computador e da IDE. Saiba fazer pelo menos o
+básico sozinho, pois isso faz muita diferença na produtividade.</p>
+<div class="admonition question short">
+<p class="admonition-title">Question</p>
+<p>Como esperado, a sintaxe de <code>while</code> em C também é como em Java. Sabendo
+disso, considere o código abaixo, que calcula a soma dos números de <code>1</code> a
+<code>10</code>.</p>
+<div class="highlight"><pre><span></span><code>    <span class="kt">int</span> <span class="n">s</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Ou melhor, que <em>deveria</em> calcular a soma dos números de <code>1</code> a <code>10</code>.</p>
+<ol>
+<li>
+<p>Qual é o problema com esse código?</p>
+</li>
+<li>
+<p>Reescreva o código, evitando os três problemas acima.</p>
+</li>
+</ol>
+<details class="note"><summary>Solução</summary><p>Podemos identificar no código os três problemas abaixo.</p>
+<ol>
+<li>
+<p>A variável <code>s</code> não é inicializada. Em Java, o valor padrão de uma variável
+  <code>int</code> é <code>0</code>, mas em C essa garantia não existe! De fato, uma variável em C é
+  inicializada com <em>lixo de memória</em>, ou seja, um valor baseado nos <em>bits</em> que
+  já estavam escritos no pedaço de memória que foi reservado para a variável.
+  Esses bits são totalmente imprevisíveis!</p>
+</li>
+<li>
+<p>Se a condição do <code>while</code> é <code>i &lt; 10</code>, então o último valor de <code>i</code> somado a <code>s</code>
+  é <code>9</code> e não <code>10</code>. A soma está incompleta!</p>
+</li>
+<li>
+<p>A variável <code>i</code> deveria ter sido inicializada com o valor <code>1</code>. A rigor, esse
+  problema não torna o código <em>incorreto</em>, pois a soma de <code>0</code> é inócua, mas
+  torna o código <em>ineficiente</em>, pois uma iteração é desperdiçada.</p>
+</li>
+</ol>
+</details>
+</div>
+<div class="admonition question short">
+<p class="admonition-title">Question</p>
+<p>Considere agora o código abaixo, que deveria calcular a <em>metade</em> da soma dos
+números de <code>1</code> a <code>10</code>.</p>
+<div class="highlight"><pre><span></span><code>  <span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+  <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">s</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+      <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Qual é o problema com esse código?</li>
+</ol>
+<details class="note"><summary>Solução</summary><p>Quando os dois parâmetros do operador <code>/</code> são inteiros, o resultado também é um
+inteiro. Se a divisão não for exata, <em>a parte fracionária é truncada</em>. Isso
+significa que o que deveria ser a soma de <code>0.5</code>, <code>1</code>, <code>1.5</code>, <code>2</code>, <code>2.5</code>, etc. é
+na verdade a soma de <code>0</code>, <code>1</code>, <code>1</code>, <code>2</code>, <code>2</code>, etc.</p>
+<p>Para resolver isso, precisamos primeiramente declarar <code>s</code> como <code>double</code>,
+permitindo a essa variável representar números reais... adivinhem... como em
+Java.</p>
+<div class="highlight"><pre><span></span><code>    <span class="kt">double</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Mas isso não é suficiente! Não adianta <code>s</code> poder armazenar reais se o que ela
+recebe de <code>/</code> são inteiros. Precisamos também garantir que <code>/</code> devolve um real,
+e isso acontece se pelo menos um dos dois números envolvidos na divisão é
+reconhecido como real.</p>
+<p>Existem duas maneiras simples de conseguir esse reconhecimento. O primeiro é
+simplesmente substituir <code>2</code> por <code>2.0</code>. A existência de uma parte fracionária,
+mesmo sendo zero, simboliza que o número é real.</p>
+<div class="highlight"><pre><span></span><code>    <span class="kt">double</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
+
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>O segundo é fazer um <em>casting</em> de <code>i</code> para <code>double</code> antes da divisão. Lembram do
+conceito de casting? Significa pedir para o programa interpretar uma variável
+como sendo de certo tipo.</p>
+<div class="highlight"><pre><span></span><code>    <span class="kt">double</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>Note que um casting de <code>int</code> para <code>double</code> é praticamente inócuo, mas no casting
+de <code>double</code> para <code>int</code> perde-se a informação fracionária.</p>
+</details>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../about-mutirao/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Sobre
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Lab2/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              Lab 2 - Praticando
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 / Marcelo Hashimoto, Igor Montagner, Rafael Corsi, Eduardo Marossi
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.placeholder": "Digite para iniciar a busca", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.5cf3e710.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../translate_admonitions.js"></script>
+      
+    
+  </body>
+</html>
